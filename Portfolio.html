@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bassant Hassan — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080B14;
+  --bg2:#0D1120;
+  --bg3:#141828;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.14);
+  --text:#F5F7FF;
+  --text2:#A8B0CC;
+  --text3:#545E7A;
+  --accent:#00E5FF;
+  --accent2:#BF5AF2;
+  --accent3:#FF6B6B;
+  --gold:#FFD93D;
+  --green:#00F5A0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* scrollbar */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 3rem;
+  background:rgba(8,11,20,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;
+  color:var(--text);text-decoration:none;letter-spacing:-0.02em;
+}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:0.85rem;color:var(--text2);text-decoration:none;
+  font-weight:500;transition:color 0.2s;letter-spacing:0.02em;
+}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{
+  background:var(--accent);color:#080B14;padding:0.5rem 1.2rem;
+  border-radius:50px;font-size:0.82rem;font-weight:600;
+  text-decoration:none;transition:opacity 0.2s;
+}
+.nav-cta:hover{opacity:0.85}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:8rem 2rem 5rem;text-align:center;position:relative;overflow:hidden;
+}
+/* animated background orbs */
+.orb{
+  position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;
+  animation:float 8s ease-in-out infinite;
+}
+.orb1{width:500px;height:500px;background:rgba(0,229,255,0.07);top:-100px;left:-100px;animation-delay:0s}
+.orb2{width:400px;height:400px;background:rgba(191,90,242,0.07);bottom:-50px;right:-50px;animation-delay:3s}
+.orb3{width:300px;height:300px;background:rgba(255,107,107,0.05);top:40%;left:60%;animation-delay:5s}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-30px) scale(1.05)}
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.25);
+  color:var(--accent);border-radius:50px;padding:0.4rem 1rem;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.05em;
+  margin-bottom:2rem;
+}
+.badge-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--accent);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+.hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(3.5rem,7vw,6.5rem);
+  font-weight:700;line-height:1.0;letter-spacing:-0.04em;
+  margin-bottom:1.5rem;position:relative;z-index:1;
+}
+.hero h1 .line2{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.hero-sub{
+  font-size:1.05rem;color:var(--text2);max-width:500px;
+  margin:0 auto 2.5rem;font-weight:300;line-height:1.8;position:relative;z-index:1;
+}
+
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;margin-bottom:4rem}
+
+.btn-glow{
+  padding:0.9rem 2rem;border-radius:50px;
+  background:linear-gradient(135deg,var(--accent),var(--green));
+  color:#080B14;font-weight:600;font-size:0.95rem;
+  text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 0 30px rgba(0,229,255,0.25);
+}
+.btn-glow:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(0,229,255,0.45)}
+
+.btn-ghost{
+  padding:0.9rem 2rem;border-radius:50px;
+  border:1px solid var(--border2);color:var(--text);
+  font-weight:500;font-size:0.95rem;text-decoration:none;
+  transition:border-color 0.2s,color 0.2s,transform 0.2s;
+}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* stats row */
+.hero-stats{
+  display:flex;gap:2px;position:relative;z-index:1;
+  background:var(--bg3);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;
+}
+.hero-stat{
+  padding:1.25rem 2rem;display:flex;flex-direction:column;align-items:center;
+  border-right:1px solid var(--border);
+}
+.hero-stat:last-child{border-right:none}
+.stat-n{font-family:'Space Grotesk',sans-serif;font-size:1.75rem;font-weight:700;color:var(--accent);line-height:1}
+.stat-l{font-size:0.72rem;color:var(--text3);margin-top:0.3rem;letter-spacing:0.04em;text-transform:uppercase}
+
+/* ── SECTION BASE ── */
+section{padding:6rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+
+.s-label{
+  font-size:0.7rem;letter-spacing:0.18em;color:var(--accent);
+  font-weight:600;text-transform:uppercase;margin-bottom:0.75rem;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.s-label::before{content:'';display:block;width:20px;height:1.5px;background:var(--accent)}
+.s-title{
+  font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,3vw,2.8rem);
+  font-weight:700;letter-spacing:-0.03em;line-height:1.1;
+  margin-bottom:3rem;
+}
+
+/* ── SKILLS ── */
+.skills-section{background:var(--bg2)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.skill-block{
+  background:var(--bg2);padding:2rem;transition:background 0.3s;
+}
+.skill-block:hover{background:var(--bg3)}
+.skill-icon{font-size:1.6rem;margin-bottom:1rem}
+.skill-block h3{
+  font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:700;
+  color:var(--text);margin-bottom:1rem;letter-spacing:-0.01em;
+}
+.skill-pills{display:flex;flex-wrap:wrap;gap:0.4rem}
+.skill-pill{
+  font-size:0.73rem;font-weight:500;padding:0.25rem 0.75rem;border-radius:50px;
+  background:rgba(0,229,255,0.07);color:var(--accent);
+  border:1px solid rgba(0,229,255,0.18);
+}
+
+/* ── PROJECTS ── */
+/* ============================================================
+   HOW TO ADD A PROJECT — replace a placeholder card:
+
+   1. Find <div class="project-card placeholder"> in the HTML
+   2. Replace with:
+
+   <div class="project-card">
+     <div class="project-thumb" style="background: linear-gradient(135deg, #COLOR1, #COLOR2)">
+       <div class="thumb-grid"></div>
+       <span class="project-thumb-label">Project Name</span>
+     </div>
+     <div class="project-body">
+       <div class="project-type">UI/UX · 2025</div>
+       <h3>Project Title</h3>
+       <p>Short description of what the project does and your role in it.</p>
+       <div class="project-tags">
+         <span class="ptag">Figma</span>
+         <span class="ptag">Angular</span>
+       </div>
+       <div class="project-links">
+         <a href="YOUR_FIGMA_LINK" target="_blank" class="plink figma-link">Figma →</a>
+         <a href="YOUR_GITHUB_LINK" target="_blank" class="plink github-link">GitHub →</a>
+       </div>
+     </div>
+   </div>
+
+   For FEATURED (wide) cards add class="project-card featured"
+   ============================================================ */
+
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.project-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:20px;
+  overflow:hidden;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+}
+.project-card:hover{transform:translateY(-6px);border-color:var(--border2);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.project-card.featured{grid-column:span 2}
+
+/* PLACEHOLDER card style */
+.project-card.placeholder{border-style:dashed;border-color:var(--border2);cursor:default}
+.project-card.placeholder:hover{transform:none;box-shadow:none}
+.placeholder-body{
+  padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:0.75rem;min-height:260px;text-align:center;
+}
+.placeholder-icon{font-size:2.5rem;opacity:0.3}
+.placeholder-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--text3)}
+.placeholder-sub{font-size:0.82rem;color:var(--text3);line-height:1.6;max-width:240px}
+.placeholder-tag{
+  font-size:0.72rem;padding:0.2rem 0.7rem;border-radius:50px;
+  background:var(--bg3);color:var(--text3);border:1px dashed var(--border2);margin-top:0.25rem;
+}
+
+/* real card parts */
+.project-thumb{
+  height:200px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.project-card.featured .project-thumb{height:260px}
+.thumb-grid{
+  position:absolute;inset:0;opacity:0.12;
+  background-image:linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px);
+  background-size:30px 30px;
+}
+.project-thumb-label{
+  font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;
+  color:white;position:relative;z-index:1;text-align:center;padding:1rem;
+  text-shadow:0 2px 10px rgba(0,0,0,0.4);
+}
+.project-body{padding:1.5rem}
+.project-type{font-size:0.7rem;letter-spacing:0.1em;color:var(--accent);font-weight:600;text-transform:uppercase;margin-bottom:0.4rem}
+.project-body h3{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;letter-spacing:-0.02em}
+.project-body p{font-size:0.88rem;color:var(--text2);line-height:1.65;margin-bottom:1rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem}
+.ptag{font-size:0.73rem;padding:0.2rem 0.7rem;border-radius:50px;background:var(--bg3);color:var(--text2);border:1px solid var(--border2)}
+.project-links{display:flex;gap:0.75rem}
+.plink{
+  font-size:0.82rem;font-weight:500;padding:0.45rem 1rem;border-radius:50px;
+  text-decoration:none;transition:opacity 0.2s,transform 0.2s;
+}
+.plink:hover{opacity:0.8;transform:translateY(-1px)}
+.figma-link{background:rgba(0,229,255,0.1);color:var(--accent);border:1px solid rgba(0,229,255,0.2)}
+.github-link{background:rgba(191,90,242,0.1);color:var(--accent2);border:1px solid rgba(191,90,242,0.2)}
+
+/* ── EXPERIENCE ── */
+.exp-section{background:var(--bg2)}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.exp-col-title{
+  font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;
+  color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2rem;
+}
+.timeline{position:relative;padding-left:1.5rem}
+.timeline::before{
+  content:'';position:absolute;left:0;top:0.5rem;bottom:0;
+  width:1px;background:linear-gradient(to bottom,var(--accent),transparent);
+}
+.t-item{position:relative;margin-bottom:2.5rem;padding-left:1.25rem}
+.t-item::before{
+  content:'';position:absolute;left:-1.6rem;top:0.45rem;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--bg2);
+  box-shadow:0 0 0 3px rgba(0,229,255,0.2);
+}
+.t-date{font-size:0.72rem;color:var(--accent);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.25rem}
+.t-item h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--text);letter-spacing:-0.01em}
+.t-org{font-size:0.83rem;color:var(--text3);margin:0.2rem 0 0.75rem;font-style:italic}
+.t-bullets{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.t-bullets li{font-size:0.85rem;color:var(--text2);line-height:1.6;display:flex;gap:0.4rem}
+.t-bullets li::before{content:'▸';color:var(--accent);flex-shrink:0;font-size:0.75rem;margin-top:0.2rem}
+
+/* ── CONTACT ── */
+.contact-section{
+  background:var(--bg);border-top:1px solid var(--border);
+  text-align:center;
+}
+.contact-inner{
+  max-width:600px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;gap:2rem;
+}
+.contact-section .s-label{justify-content:center}
+.contact-section .s-title{margin-bottom:0}
+.contact-desc{font-size:1rem;color:var(--text2);line-height:1.8;font-weight:300}
+.contact-links{display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center}
+.c-link{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.75rem 1.5rem;border-radius:50px;
+  border:1px solid var(--border2);color:var(--text2);
+  text-decoration:none;font-size:0.88rem;font-weight:500;
+  transition:border-color 0.2s,color 0.2s,transform 0.2s;
+}
+.c-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.c-link.primary{
+  background:linear-gradient(135deg,var(--accent),var(--green));
+  color:#080B14;border:none;box-shadow:0 0 25px rgba(0,229,255,0.25);font-weight:600;
+}
+.c-link.primary:hover{box-shadow:0 0 40px rgba(0,229,255,0.45);color:#080B14}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg2);border-top:1px solid var(--border);
+  text-align:center;padding:1.5rem;
+  font-size:0.78rem;color:var(--text3);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{padding:7rem 1.5rem 4rem}
+  .hero-stats{flex-direction:column;gap:0}
+  .hero-stat{border-right:none;border-bottom:1px solid var(--border)}
+  .hero-stat:last-child{border-bottom:none}
+  .skills-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .project-card.featured{grid-column:span 1}
+  .exp-grid{grid-template-columns:1fr;gap:3rem}
+  section{padding:4rem 1.5rem}
+}
+
+/* ── FADE-IN ANIMATION ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero>*{animation:fadeUp 0.7s ease both}
+.hero>*:nth-child(2){animation-delay:0.05s}
+.hero>*:nth-child(3){animation-delay:0.1s}
+.hero>*:nth-child(4){animation-delay:0.15s}
+.hero>*:nth-child(5){animation-delay:0.2s}
+.hero>*:nth-child(6){animation-delay:0.25s}
+.hero>*:nth-child(7){animation-delay:0.3s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">BH<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="hero-badge">
+    <div class="badge-dot"></div>
+    Available for junior roles
+  </div>
+
+  <h1>
+    Bassant<br>
+    <span class="line2">Hassan.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Junior UI/UX Designer &amp; Front-End Developer —
+    I design with empathy and build with code,
+    from wireframe to working interface.
+  </p>
+
+  <div class="hero-btns">
+    <a href="#projects" class="btn-glow">View Projects →</a>
+    <a href="#contact" class="btn-ghost">Get in Touch</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="stat-n">10+</span>
+      <span class="stat-l">Videos Produced</span>
+    </div>
+    <div class="hero-stat">
+      <span class="stat-n">10+</span>
+      <span class="stat-l">Team Members Led</span>
+    </div>
+    <div class="hero-stat">
+      <span class="stat-n">20+</span>
+      <span class="stat-l">Screens Designed</span>
+    </div>
+    <div class="hero-stat">
+      <span class="stat-n">5+</span>
+      <span class="stat-l">Projects</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="container">
+    <div class="s-label">What I bring</div>
+    <div class="s-title">Skills &amp; Tools</div>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-icon">🎨</div>
+        <h3>UI/UX Design</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">User Research</span>
+          <span class="skill-pill">Wireframing</span>
+          <span class="skill-pill">Prototyping</span>
+          <span class="skill-pill">Design Thinking</span>
+          <span class="skill-pill">Usability Testing</span>
+          <span class="skill-pill">Accessibility (WCAG)</span>
+          <span class="skill-pill">Visual Design</span>
+          <span class="skill-pill">Information Architecture</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-icon">💻</div>
+        <h3>Front-End Development</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS3</span>
+          <span class="skill-pill">JavaScript ES6+</span>
+          <span class="skill-pill">Angular</span>
+          <span class="skill-pill">Responsive Design</span>
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">C / C++ / Java</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-icon">🎬</div>
+        <h3>Creative &amp; Tools</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Adobe Premiere Pro</span>
+          <span class="skill-pill">Adobe After Effects</span>
+          <span class="skill-pill">Visual Storytelling</span>
+          <span class="skill-pill">Motion Design</span>
+          <span class="skill-pill">Brand Identity</span>
+          <span class="skill-pill">ICDL Certified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="s-label">Selected work</div>
+    <div class="s-title">Projects</div>
+
+    <!-- ============================================================
+         HOW TO ADD YOUR PROJECTS:
+
+         1. Find a <div class="project-card placeholder"> below
+         2. Replace the WHOLE card with this template:
+
+         <div class="project-card">                          ← or "project-card featured" for wide card
+           <div class="project-thumb" style="background: linear-gradient(135deg, #4338CA, #7C3AED)">
+             <div class="thumb-grid"></div>
+             <span class="project-thumb-label">Your Project Name</span>
+           </div>
+           <div class="project-body">
+             <div class="project-type">UI/UX · 2025</div>
+             <h3>Project Title</h3>
+             <p>Short description — what it does and what your role was.</p>
+             <div class="project-tags">
+               <span class="ptag">Figma</span>
+               <span class="ptag">Angular</span>
+               <span class="ptag">HTML5</span>
+             </div>
+             <div class="project-links">
+               <a href="PASTE_FIGMA_LINK" target="_blank" class="plink figma-link">Figma →</a>
+               <a href="PASTE_GITHUB_LINK" target="_blank" class="plink github-link">GitHub →</a>
+             </div>
+           </div>
+         </div>
+
+         GRADIENT IDEAS for project-thumb background:
+         Purple:  linear-gradient(135deg, #4338CA, #7C3AED)
+         Blue:    linear-gradient(135deg, #0F4C81, #3B82F6)
+         Green:   linear-gradient(135deg, #065F46, #10B981)
+         Pink:    linear-gradient(135deg, #9D174D, #EC4899)
+         Orange:  linear-gradient(135deg, #92400E, #F59E0B)
+         ============================================================ -->
+
+    <div class="projects-grid">
+
+      <!-- ── REAL PROJECT — Graduation Project ── -->
+      <div class="project-card featured">
+        <div class="project-thumb" style="background: linear-gradient(135deg, #00E5FF 0%, #BF5AF2 60%, #FF6B6B 100%)">
+          <div class="thumb-grid"></div>
+          <span class="project-thumb-label">Graduation Project<br><span style="font-size:0.78rem;opacity:0.85;font-weight:400">Full-Stack Web Application</span></span>
+        </div>
+        <div class="project-body">
+          <div class="project-type">UI/UX + Front-End · 2024 – Present</div>
+          <h3>Full-Stack Web Application — UX-Led</h3>
+          <p>End-to-end product built from user research to working code. Designed 20+ screens — personas, user journeys, and wireframes first — then implemented the full front end in Angular with REST API integration.</p>
+          <div class="project-tags">
+            <span class="ptag">Angular</span>
+            <span class="ptag">HTML5</span>
+            <span class="ptag">CSS3</span>
+            <span class="ptag">REST API</span>
+            <span class="ptag">UX Research</span>
+            <span class="ptag">Wireframing</span>
+          </div>
+          <div class="project-links">
+            <a href="PASTE_FIGMA_LINK_HERE" target="_blank" class="plink figma-link">Figma →</a>
+            <a href="PASTE_GITHUB_LINK_HERE" target="_blank" class="plink github-link">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════
+           ADD YOUR NEXT PROJECT — replace this placeholder:
+
+           <div class="project-card">
+             <div class="project-thumb" style="background: linear-gradient(135deg, #COLOR1, #COLOR2)">
+               <div class="thumb-grid"></div>
+               <span class="project-thumb-label">Project Name</span>
+             </div>
+             <div class="project-body">
+               <div class="project-type">UI/UX · 2025</div>
+               <h3>Project Title</h3>
+               <p>Short description of what it does and your role.</p>
+               <div class="project-tags">
+                 <span class="ptag">Figma</span>
+                 <span class="ptag">Angular</span>
+               </div>
+               <div class="project-links">
+                 <a href="FIGMA_LINK" target="_blank" class="plink figma-link">Figma →</a>
+                 <a href="GITHUB_LINK" target="_blank" class="plink github-link">GitHub →</a>
+               </div>
+             </div>
+           </div>
+
+           GRADIENT IDEAS:
+           Cyan→Purple : linear-gradient(135deg, #00E5FF, #BF5AF2)
+           Cyan→Green  : linear-gradient(135deg, #00E5FF, #00F5A0)
+           Purple→Pink : linear-gradient(135deg, #BF5AF2, #FF6B6B)
+           Gold→Orange : linear-gradient(135deg, #FFD93D, #FF6B6B)
+           Green→Cyan  : linear-gradient(135deg, #00F5A0, #00E5FF)
+      ══════════════════════════════════════════════════════════ -->
+      <div class="project-card placeholder">
+        <div class="placeholder-body">
+          <div class="placeholder-icon">◈</div>
+          <div class="placeholder-title">Your Next Project</div>
+          <div class="placeholder-sub">Copy the template from the comment above, paste your Figma & GitHub links, add your title, description and tags — done!</div>
+          <span class="placeholder-tag">Figma + GitHub ready</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="exp-section">
+  <div class="container">
+    <div class="s-label">Background</div>
+    <div class="s-title">Experience &amp; Education</div>
+    <div class="exp-grid">
+
+      <div>
+        <div class="exp-col-title">Experience</div>
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-date">2022 – Present</div>
+            <h3>Vice Head — Media Production</h3>
+            <div class="t-org">180 Daraga · Egypt</div>
+            <ul class="t-bullets">
+              <li>Led a 10+ member creative team delivering 10+ videos on time</li>
+              <li>Coordinated across 3 departments — PR, marketing &amp; design</li>
+              <li>Scripted, shot and edited content in Premiere Pro &amp; After Effects</li>
+              <li>Maintained visual brand consistency across all digital touchpoints</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="exp-col-title">Education &amp; Training</div>
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-date">Sep 2022 – Jun 2026</div>
+            <h3>BSc Computer Science</h3>
+            <div class="t-org">Egyptian E-Learning University (EELU)</div>
+            <ul class="t-bullets">
+              <li>HCI, System Design, Web Technologies, Software Engineering</li>
+              <li>Graduation project: 20+ screens, full UX-to-code lifecycle</li>
+            </ul>
+          </div>
+          <div class="t-item">
+            <div class="t-date">Completed</div>
+            <h3>UI/UX Design Course</h3>
+            <div class="t-org">Online</div>
+            <ul class="t-bullets">
+              <li>User research, wireframing, prototyping, WCAG, visual design</li>
+            </ul>
+          </div>
+          <div class="t-item">
+            <div class="t-date">Completed</div>
+            <h3>Front-End Web Development</h3>
+            <div class="t-org">Online</div>
+            <ul class="t-bullets">
+              <li>HTML5, CSS3, JavaScript ES6+, Angular, Responsive Design</li>
+            </ul>
+          </div>
+          <div class="t-item">
+            <div class="t-date">In Progress</div>
+            <h3>Back-End Web Development</h3>
+            <div class="t-org">Online</div>
+            <ul class="t-bullets">
+              <li>Server-side logic, databases, API design</li>
+            </ul>
+          </div>
+          <div class="t-item">
+            <div class="t-date">Certified</div>
+            <h3>ICDL</h3>
+            <div class="t-org">International Computer Driving Licence</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="s-label">Get in touch</div>
+      <div class="s-title">Let's Work Together</div>
+      <p class="contact-desc">
+        I'm actively looking for junior UI/UX and Front-End opportunities.<br>
+        If you're building something great, I'd love to hear about it.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:hassanbassant659@gmail.com" class="c-link primary">✉ Send Email</a>
+        <a href="https://www.linkedin.com/in/bassant-hassan-696b04266" target="_blank" class="c-link">LinkedIn →</a>
+        <a href="tel:+201505994207" class="c-link">+20 150 599 4207</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Bassant Hassan · Junior UI/UX Designer &amp; Front-End Developer · Egypt</p>
+</footer>
+
+</body>
+</html>
